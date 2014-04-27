@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo Setting up PWM channels... 
+echo am33xx_pwm > /sys/devices/bone_capemgr.9/slots
+echo bone_pwm_P8_13 > /sys/devices/bone_capemgr.9/slots
+echo bone_pwm_P9_14 > /sys/devices/bone_capemgr.9/slots
+
+sleep .5
+
+echo Enabling P8 pin 13...
+echo 0 > /sys/devices/ocp.3/pwm_test_P8_13.15/polarity
+echo 20000000 > /sys/devices/ocp.3/pwm_test_P8_13.15/period
+echo 1000000 > /sys/devices/ocp.3/pwm_test_P8_13.15/duty
+
+sleep .5
+
+echo Enabling P9 pin 14...
+echo 0 > /sys/devices/ocp.3/pwm_test_P9_14.16/polarity
+echo 20000000 > /sys/devices/ocp.3/pwm_test_P9_14.16/period
+echo 1000000 > /sys/devices/ocp.3/pwm_test_P9_14.16/duty
